@@ -62,6 +62,13 @@
     font-family:Inter,system-ui,sans-serif;font-size:.6875rem;letter-spacing:.14em;
     text-transform:uppercase;color:var(--ink-faint);margin-top:.9rem;
   }
+  figcaption .cap-date{display:block}
+  figcaption .cap-text{
+    display:block;max-width:30rem;margin:.5rem auto 0;
+    font-family:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+    font-size:1.0625rem;font-style:italic;line-height:1.6;letter-spacing:0;
+    text-transform:none;color:var(--ink-soft);text-wrap:pretty;
+  }
   .hero{margin:0 0 clamp(2rem,6vw,3rem)}
   .hero img{max-height:72vh;width:auto;max-width:100%}
   .hint{
@@ -104,6 +111,14 @@
     border-radius:2px;box-shadow:0 20px 70px rgba(0,0,0,.6);
     -webkit-user-select:none;user-select:none;
   }
+  .lb-fig{display:flex;flex-direction:column;align-items:center;margin:0;max-width:calc(100vw - 5rem)}
+  .lb-cap{max-width:34rem;margin-top:1rem;text-align:center;color:rgba(255,255,255,.88)}
+  .lb-date{
+    display:block;font-family:Inter,system-ui,sans-serif;font-size:.6875rem;
+    letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);
+  }
+  .lb-text{display:block;margin-top:.35rem;font-style:italic;font-size:1.0625rem;line-height:1.55;text-wrap:pretty}
+  [hidden]{display:none!important}
   .lb button{
     position:absolute;background:none;border:0;color:rgba(255,255,255,.75);
     cursor:pointer;font-family:Inter,system-ui,sans-serif;line-height:1;
@@ -121,6 +136,9 @@
   }
   @media (max-width:600px){
     .lb img{max-width:calc(100vw - 1.5rem);max-height:calc(100vh - 6rem)}
+    .lb-fig{max-width:calc(100vw - 1.5rem)}
+    .lb-cap{padding:0 .5rem}
+    .lb-text{font-size:1rem}
     .lb-prev,.lb-next{font-size:2rem;padding:.75rem .5rem}
   }
   body.lb-lock{overflow:hidden}
@@ -142,6 +160,7 @@
 
   <figure class="hero fade">
     <img src="fotos/01-portada.jpg" width="1012" height="1800" alt="Nosotros dos en la playa al atardecer" data-i="0">
+    <figcaption><span class="cap-date">3 de mayo</span><span class="cap-text">Hoy fuimos a la playa. Fue uno de los fines de semana más tranquilos de mi vida, porque a su lado todo se siente en paz. María estuvo maravillosa, y cantamos durante todo el camino de regreso a casa. Entre canción y canción sentí una conexión con ella que no se puede explicar. Ya cuento los días para el próximo.</span></figcaption>
   </figure>
 
   <header class="fade">
@@ -172,12 +191,12 @@
 
     <figure>
       <img src="fotos/04-viajes-b.jpg" width="1800" height="1350" alt="En uno de nuestros viajes" loading="lazy" data-i="2">
-      <figcaption>Nuestros viajes</figcaption>
+      <figcaption><span class="cap-date">18 de julio</span><span class="cap-text">Fui al zoo de NC por primera vez, y con María. Caminamos juntos, comimos los sándwiches deliciosos que ella preparó con tanto cariño y la pasamos increíble. La convencí de subirse a un búfalo para tomarle una foto, y verla reír así me llenó el corazón. Después pasamos por la tienda de recuerdos y volvimos en bus al carro, contándonos historias de cuando éramos niños. Un día perfecto, como todos a su lado.</span></figcaption>
     </figure>
 
     <figure class="tall">
       <img src="fotos/05-ronquidos.jpg" width="1012" height="1800" alt="Durmiendo en mi pecho" loading="lazy" data-i="3">
-      <figcaption>Música para mis oídos</figcaption>
+      <figcaption><span class="cap-date">25 de abril</span><span class="cap-text">De los primeros días que se quedaba en casa. Se quedó dormida encima de mí, y sus ronquidos son la música más bonita que conozco. No me muevo ni un milímetro para no despertarla; podría quedarme así toda la vida.</span></figcaption>
     </figure>
 
     <p>Cada comida que me hiciste me sabía a gloria, no porque estuviera exagerando, sino porque la hiciste con tus manos. Para mí, todo lo que tus manos y tu corazón pudieran cocinar era lo mejor que yo podía comer ese día, porque lo hacías desde el corazón.</p>
@@ -188,6 +207,7 @@
 
     <figure>
       <img src="fotos/06-romantico.jpg" width="1800" height="1350" alt="Tú, hermosa" loading="lazy" data-i="4">
+      <figcaption><span class="cap-date">23 de agosto</span><span class="cap-text">Qué preciosa se ve. Me invitó a ver un museo del Titanic, y entre tanta historia, ella era lo más bonito del lugar. Tengo que planear un crucero con ella: quiero ver el océano a su lado.</span></figcaption>
     </figure>
 
     <h2>Lo que siempre quisiste saber de mí</h2>
@@ -219,13 +239,14 @@
 
     <figure class="tall">
       <img src="fotos/07-admiro.jpg" width="1012" height="1800" alt="Tú cocinando" loading="lazy" data-i="6">
+      <figcaption><span class="cap-date">10 de mayo</span><span class="cap-text">Hicimos pasta juntos: ravioles, mis favoritos. Me encanta ver cómo se esmera en que todo quede perfecto para mí; por eso cocino a su lado, porque cada minuto con ella es un regalo. Los mejores ravioles de mi vida, porque los hicimos juntos.</span></figcaption>
     </figure>
 
     <p>Admiro profundamente tu sentido del humor, porque es tontito pero siempre tiene en cuenta a los demás. Amo tu risa, tus chistes tontos y la manera en que me hacías reír cuando menos lo esperaba. Admiro tu sentido de la justicia y la manera en que te importan las personas que a veces no pueden defenderse: nunca le has tenido miedo a defender a alguien que crees que está siendo tratado injustamente, especialmente a quienes tienen menos, no tienen voz, o están siendo intimidados. Eso es algo de ti que respeto genuinamente, y espero que nunca lo pierdas.</p>
 
     <figure class="tall">
       <img src="fotos/08-risa.jpg" width="1012" height="1800" alt="Tu risa" loading="lazy" data-i="7">
-      <figcaption>Tu risa</figcaption>
+      <figcaption><span class="cap-date">3 de mayo</span><span class="cap-text">Esa risa fue lo que me enamoró de ella. Daría lo que fuera por verla reír así cada día de mi vida. Ahí, en esa playa, supe que quería compartir todos mis días con ella.</span></figcaption>
     </figure>
 
     <p>Amo la manera en la que siempre puedes encontrar algo bueno incluso en las peores situaciones, cómo siempre le sacas un chiste o ves que no es tan malo como parece. Amo también que no le tienes miedo a la vida, que puedes vivir como si hoy fuera tu último día. Gracias por enseñarme que hay más en la vida que planearlo todo; trajiste espontaneidad a mi vida de una manera que no sabía que necesitaba, la forma en que bailabas conmigo, tu dulzura, y todas las pequeñas maneras en las que me mostrabas cariño y me hacían sentir amado.</p>
@@ -257,7 +278,10 @@
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Foto">
   <button class="lb-close" id="lbClose" aria-label="Cerrar">&times;</button>
   <button class="lb-prev" id="lbPrev" aria-label="Anterior">&#8249;</button>
-  <img id="lbImg" src="" alt="">
+  <div class="lb-fig">
+    <img id="lbImg" src="" alt="">
+    <div class="lb-cap" id="lbCap"><span class="lb-date" id="lbDate"></span><span class="lb-text" id="lbText"></span></div>
+  </div>
   <button class="lb-next" id="lbNext" aria-label="Siguiente">&#8250;</button>
   <div class="lb-count" id="lbCount"></div>
 </div>
@@ -265,16 +289,34 @@
 <script>
 (function(){
   var imgs = Array.prototype.slice.call(document.querySelectorAll('figure img[data-i]'));
-  var srcs = imgs.map(function(im){ return {src: im.getAttribute('src'), alt: im.alt}; });
+  var srcs = imgs.map(function(im){
+    var cap=im.parentNode.querySelector('figcaption'),
+        d=cap && cap.querySelector('.cap-date'), t=cap && cap.querySelector('.cap-text');
+    return {src: im.getAttribute('src'), alt: im.alt,
+            date: d ? d.textContent : (cap && !t ? cap.textContent : ''),
+            text: t ? t.textContent : ''};
+  });
   var lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'),
-      lbCount=document.getElementById('lbCount'), i=0;
+      lbCount=document.getElementById('lbCount'), lbCap=document.getElementById('lbCap'),
+      lbDate=document.getElementById('lbDate'), lbText=document.getElementById('lbText'), i=0;
 
+  // Leave room under the photo for its caption
+  function fit(){
+    var capH = lbCap.hidden ? 0 : lbCap.offsetHeight + 16;
+    var reserve = window.innerWidth <= 600 ? 96 : 112;
+    lbImg.style.maxHeight = Math.max(160, window.innerHeight - capH - reserve) + 'px';
+  }
   function show(n){
     i=(n+srcs.length)%srcs.length;
-    lbImg.src=srcs[i].src; lbImg.alt=srcs[i].alt;
+    var s=srcs[i];
+    lbImg.src=s.src; lbImg.alt=s.alt;
+    lbDate.textContent=s.date; lbText.textContent=s.text;
+    lbDate.hidden=!s.date; lbText.hidden=!s.text; lbCap.hidden=!s.date && !s.text;
     lbCount.textContent=(i+1)+' / '+srcs.length;
+    fit();
   }
-  function open(n){ show(n); lb.classList.add('open'); document.body.classList.add('lb-lock'); }
+  function open(n){ lb.classList.add('open'); document.body.classList.add('lb-lock'); show(n); }
+  window.addEventListener('resize', function(){ if(lb.classList.contains('open')) fit(); });
   function close(){ lb.classList.remove('open'); document.body.classList.remove('lb-lock'); }
 
   imgs.forEach(function(im){
