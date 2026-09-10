@@ -4,7 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-<title>Carta para María</title>
+<title>Por si algún día dudas de que te amo</title>
+<script>
+  try{ if(localStorage.getItem('lang')==='it'){
+    document.documentElement.setAttribute('data-lang','it');
+    document.documentElement.lang='it'; document.title='Se mai un giorno dubiterai che ti amo';
+  } }catch(e){}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -34,6 +40,21 @@
   }
   .sheet{max-width:var(--measure);margin:0 auto;padding:clamp(2.5rem,7vw,4.5rem) clamp(1.5rem,6vw,2.5rem) clamp(4rem,12vw,8rem)}
 
+  /* ---------- language ---------- */
+  :root:not([data-lang="it"]) body [lang="it"],
+  :root[data-lang="it"] body [lang="es"]{display:none!important}
+  .lang{
+    position:fixed;z-index:50;
+    top:max(.9rem,env(safe-area-inset-top));right:max(.9rem,env(safe-area-inset-right));
+    font-family:Inter,system-ui,sans-serif;font-size:.6875rem;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);
+    background:var(--paper);background:color-mix(in srgb,var(--paper) 82%,transparent);
+    border:1px solid var(--rule);border-radius:999px;padding:.55rem .95rem;cursor:pointer;
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+    transition:color .2s,border-color .2s;-webkit-tap-highlight-color:transparent;
+  }
+  .lang:hover,.lang:focus-visible{color:var(--accent);border-color:var(--accent);outline:none}
+
   /* ---------- opening ---------- */
   header{text-align:center;margin-bottom:clamp(3rem,8vw,4.5rem)}
   .eyebrow{
@@ -41,8 +62,8 @@
     letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 1.5rem;
   }
   h1{
-    font-size:clamp(2.75rem,11vw,4rem);font-weight:300;font-style:italic;
-    line-height:1.05;letter-spacing:-.01em;margin:0;color:var(--ink);
+    font-size:clamp(2.25rem,9vw,3.25rem);font-weight:300;font-style:italic;
+    line-height:1.1;letter-spacing:-.01em;margin:0;color:var(--ink);text-wrap:balance;
   }
   .flourish{display:block;width:5rem;height:1px;margin:2.25rem auto 0;
     background:linear-gradient(to right,transparent,var(--accent),transparent)}
@@ -94,7 +115,7 @@
   /* ---------- closing ---------- */
   .close{margin-top:clamp(3.25rem,9vw,4.5rem);padding-top:2.5rem;border-top:1px solid var(--rule);text-align:center}
   .thanks{font-style:italic;font-size:1.375em;color:var(--ink-soft);margin-bottom:1.25em;line-height:1.5}
-  .signoff{font-size:2.25em;font-style:italic;font-weight:300;color:var(--accent);margin:0;line-height:1.2}
+  .signoff{font-size:1.85em;font-style:italic;font-weight:300;color:var(--accent);margin:0;line-height:1.25;text-wrap:balance}
 
   /* ---------- lightbox ---------- */
   .lb{
@@ -156,34 +177,43 @@
 </style>
 </head>
 <body>
+<button class="lang" id="langBtn" type="button" aria-label="Leggi in italiano">Italiano</button>
+
 <div class="sheet">
 
   <figure class="hero fade">
     <img src="fotos/01-portada.jpg" width="1012" height="1800" alt="Nosotros dos en la playa al atardecer" data-i="0">
-    <figcaption><span class="cap-date">3 de mayo</span><span class="cap-text">Hoy fuimos a la playa. Fue uno de los fines de semana más tranquilos de mi vida, porque a su lado todo se siente en paz. María estuvo maravillosa, y cantamos durante todo el camino de regreso a casa. Entre canción y canción sentí una conexión con ella que no se puede explicar. Ya cuento los días para el próximo.</span></figcaption>
+    <figcaption>
+      <span class="cap-date" lang="es">3 de mayo</span><span class="cap-date" lang="it">3 maggio</span>
+      <span class="cap-text" lang="es">Hoy fuimos a la playa. Fue uno de los fines de semana más tranquilos de mi vida, porque a su lado todo se siente en paz. Mariachiara estuvo maravillosa, y cantamos durante todo el camino de regreso a casa. Entre canción y canción sentí una conexión con ella que no se puede explicar. Ya cuento los días para el próximo.</span><span class="cap-text" lang="it">Oggi siamo andati al mare. È stato uno dei weekend più tranquilli della mia vita, perché accanto a lei tutto è pace. Mariachiara è stata meravigliosa, e abbiamo cantato per tutto il viaggio di ritorno a casa. Tra una canzone e l'altra ho sentito con lei una connessione che non si può spiegare. Conto già i giorni per il prossimo.</span>
+    </figcaption>
   </figure>
 
   <header class="fade">
-    <p class="eyebrow">Para ti</p>
-    <h1>Carta para María</h1>
+    <p class="eyebrow"><span lang="es">Para ti, Mariachiara</span><span lang="it">Per te, Mariachiara</span></p>
+    <h1><span lang="es">Por si algún día dudas de que te amo</span><span lang="it">Se mai un giorno dubiterai che ti amo</span></h1>
     <span class="flourish" aria-hidden="true"></span>
   </header>
 
-  <p class="hint fade">Toca cualquier foto para verla en grande</p>
+  <p class="hint fade"><span lang="es">Toca cualquier foto para verla en grande</span><span lang="it">Tocca una foto per vederla in grande</span></p>
 
   <main class="fade">
 
-    <p class="lede">Hola María, esta es la carta más especial que he escrito en mi vida. La escribo para expresar todo el aprecio y el amor que tengo por ti. Desde el día que te conocí, nunca me imaginé sentir lo que siento por ti, porque sinceramente no esperaba encontrarte ni estaba buscando a nadie. Pero conocí a una mujer maravillosa que trajo miles de enseñanzas a mi vida y que ha luchado por sobrevivir en la vida, y por eso te admiro; una mujer que se ha adaptado a muchos escenarios, y eso muestra que eres una guerrera. Me has demostrado que aunque la vida sea difícil con nosotros, nosotros podemos traer ternura y amor a este mundo, así el mundo no haya sido recíproco con nosotros: es nuestro deber darle amor a quien más lo necesita.</p>
+    <p class="lede" lang="es">Hola Mariachiara, esta es la carta más especial que he escrito en mi vida. La escribo para expresar todo el aprecio y el amor que tengo por ti. Desde el día que te conocí, nunca me imaginé sentir lo que siento por ti, porque sinceramente no esperaba encontrarte ni estaba buscando a nadie. Pero conocí a una mujer maravillosa que trajo miles de enseñanzas a mi vida y que ha luchado por sobrevivir en la vida, y por eso te admiro; una mujer que se ha adaptado a muchos escenarios, y eso muestra que eres una guerrera. Me has demostrado que aunque la vida sea difícil con nosotros, nosotros podemos traer ternura y amor a este mundo, así el mundo no haya sido recíproco con nosotros: es nuestro deber darle amor a quien más lo necesita.</p>
+    <p class="lede" lang="it">Ciao Mariachiara, questa è la lettera più speciale che abbia mai scritto in vita mia. La scrivo per esprimerti tutta la stima e l'amore che provo per te. Dal giorno in cui ti ho conosciuta, non avrei mai immaginato di provare quello che provo per te, perché sinceramente non mi aspettavo di trovarti né stavo cercando nessuno. Ma ho conosciuto una donna meravigliosa che ha portato mille insegnamenti nella mia vita e che ha lottato per sopravvivere, e per questo ti ammiro; una donna che ha saputo adattarsi a tante situazioni diverse, e questo dimostra che sei una guerriera. Mi hai dimostrato che, anche se la vita è difficile con noi, noi possiamo portare tenerezza e amore in questo mondo, anche se il mondo non ci ha ricambiati: è nostro dovere dare amore a chi ne ha più bisogno.</p>
 
-    <h2>Lo que aprendí de ti</h2>
+    <h2><span lang="es">Lo que aprendí de ti</span><span lang="it">Quello che ho imparato da te</span></h2>
 
-    <p>Quiero que sepas que aunque tal vez no nos digamos las mejores cosas todo el tiempo, hay muchísimas cosas que aprendí de ti que aplico en mi día a día, porque me hiciste mejor persona gracias a tus enseñanzas. Pude ver el mundo con unos ojos de amor hacia la persona menos favorecida. Pude ver que la ternura mueve montañas más que unas palabras de coraje. Aprendí que los pequeños detalles son los que más importan: una flor cuando nos peleábamos; un <em>&ldquo;I love you MORE than the THING&rdquo;</em>; un buenos días con cariño; un beso en la frente cuando te veía dormir; un abrazo y un beso antes de ir al trabajo; un avísame cuando llegues a salvo, que despertó en mí las ganas de abrazarte cuando tenías frío en la noche; estar pendiente de si ya habías comido; un abrazo fuerte cuando menos lo esperábamos; una palabra de aliento cuando estábamos a punto de rendirnos; una palabra de positivismo cuando todo iba mal; un yo creo en ti cuando se perdía la fe; un lo vamos a superar juntos cuando te sentías sola; un feliz cumpleaños donde el regalo no importaba, sino la intención. Muchas gracias por todos esos innumerables pequeños detalles que me enseñaste.</p>
+    <p lang="es">Quiero que sepas que aunque tal vez no nos digamos las mejores cosas todo el tiempo, hay muchísimas cosas que aprendí de ti que aplico en mi día a día, porque me hiciste mejor persona gracias a tus enseñanzas. Pude ver el mundo con unos ojos de amor hacia la persona menos favorecida. Pude ver que la ternura mueve montañas más que unas palabras de coraje. Aprendí que los pequeños detalles son los que más importan: una flor cuando nos peleábamos; un <em>&ldquo;I love you MORE than the THING&rdquo;</em>; un buenos días con cariño; un beso en la frente cuando te veía dormir; un abrazo y un beso antes de ir al trabajo; un avísame cuando llegues a salvo, que despertó en mí las ganas de abrazarte cuando tenías frío en la noche; estar pendiente de si ya habías comido; un abrazo fuerte cuando menos lo esperábamos; una palabra de aliento cuando estábamos a punto de rendirnos; una palabra de positivismo cuando todo iba mal; un yo creo en ti cuando se perdía la fe; un lo vamos a superar juntos cuando te sentías sola; un feliz cumpleaños donde el regalo no importaba, sino la intención. Muchas gracias por todos esos innumerables pequeños detalles que me enseñaste.</p>
+    <p lang="it">Voglio che tu sappia che, anche se forse non sempre ci diciamo le cose più belle, ci sono tantissime cose che ho imparato da te e che metto in pratica ogni giorno, perché grazie ai tuoi insegnamenti mi hai reso una persona migliore. Ho imparato a guardare il mondo con occhi pieni d'amore verso chi è meno fortunato. Ho capito che la tenerezza smuove le montagne più di qualsiasi parola di rabbia. Ho imparato che sono i piccoli dettagli a contare di più: un fiore quando litigavamo; un <em>&ldquo;I love you MORE than the THING&rdquo;</em>; un buongiorno pieno d'affetto; un bacio sulla fronte mentre ti guardavo dormire; un abbraccio e un bacio prima di andare al lavoro; un &ldquo;avvisami quando arrivi&rdquo;, che ha risvegliato in me la voglia di abbracciarti quando di notte avevi freddo; preoccuparmi se avevi già mangiato; un abbraccio forte quando meno ce lo aspettavamo; una parola di incoraggiamento quando stavamo per arrenderci; una parola positiva quando tutto andava male; un &ldquo;io credo in te&rdquo; quando si perdeva la fede; un &ldquo;ce la faremo insieme&rdquo; quando ti sentivi sola; un buon compleanno in cui non contava il regalo, ma l'intenzione. Grazie di cuore per tutti quegli innumerevoli piccoli dettagli che mi hai insegnato.</p>
 
-    <p>Cada pequeño &ldquo;buenas noches&rdquo; antes de dormir y cada &ldquo;buenos días&rdquo; para empezar el día, cada comida que podíamos comer juntos, cada cama que tendíamos juntos, unió y fortaleció ese lazo, enseñándome que no tengo que hacerlo todo solo, que tú estás ahí para apoyarme siempre. Que no todo en la vida se trata de planear hasta el último detalle, que las cosas espontáneas también están bien y le dan sabor a la vida. Entendí que la maravilla del mundo está en poder compartir las cosas con la persona que amas.</p>
+    <p lang="es">Cada pequeño &ldquo;buenas noches&rdquo; antes de dormir y cada &ldquo;buenos días&rdquo; para empezar el día, cada comida que podíamos comer juntos, cada cama que tendíamos juntos, unió y fortaleció ese lazo, enseñándome que no tengo que hacerlo todo solo, que tú estás ahí para apoyarme siempre. Que no todo en la vida se trata de planear hasta el último detalle, que las cosas espontáneas también están bien y le dan sabor a la vida. Entendí que la maravilla del mundo está en poder compartir las cosas con la persona que amas.</p>
+    <p lang="it">Ogni piccola &ldquo;buonanotte&rdquo; prima di dormire e ogni &ldquo;buongiorno&rdquo; per cominciare la giornata, ogni pasto che riuscivamo a condividere, ogni letto che rifacevamo insieme, hanno unito e rafforzato quel legame, insegnandomi che non devo fare tutto da solo, che tu ci sei sempre per sostenermi. Che non tutto nella vita consiste nel pianificare fino all'ultimo dettaglio, che anche le cose spontanee vanno bene e danno sapore alla vita. Ho capito che la meraviglia del mondo sta nel poter condividere le cose con la persona che ami.</p>
 
-    <h2>Los momentos que atesoro</h2>
+    <h2><span lang="es">Los momentos que atesoro</span><span lang="it">I momenti che custodisco</span></h2>
 
-    <p>Cada conversación que tuvimos en la madrugada fue mágica para mí, porque cinco minutos contigo eran como diez horas con cualquier otra persona. Disfrutaba cada minuto y aun así pasaban las horas sin darnos cuenta. Cada viaje que tuvimos mientras sostenías mi mano me hacía el hombre más feliz del mundo. Cada noche que roncabas en mi pecho era música para mis oídos.</p>
+    <p lang="es">Cada conversación que tuvimos en la madrugada fue mágica para mí, porque cinco minutos contigo eran como diez horas con cualquier otra persona. Disfrutaba cada minuto y aun así pasaban las horas sin darnos cuenta. Cada viaje que tuvimos mientras sostenías mi mano me hacía el hombre más feliz del mundo. Cada noche que roncabas en mi pecho era música para mis oídos.</p>
+    <p lang="it">Ogni conversazione che abbiamo avuto a notte fonda è stata magica per me, perché cinque minuti con te erano come dieci ore con chiunque altro. Mi godevo ogni minuto, eppure le ore passavano senza che ce ne accorgessimo. Ogni viaggio che abbiamo fatto mentre mi tenevi la mano mi rendeva l'uomo più felice del mondo. Ogni notte in cui russavi sul mio petto era musica per le mie orecchie.</p>
 
     <figure class="tall">
       <img src="fotos/03-viajes-a.jpg" width="1012" height="1800" alt="En la playa" loading="lazy" data-i="1">
@@ -191,85 +221,119 @@
 
     <figure>
       <img src="fotos/04-viajes-b.jpg" width="1800" height="1350" alt="En uno de nuestros viajes" loading="lazy" data-i="2">
-      <figcaption><span class="cap-date">18 de julio</span><span class="cap-text">Fui al zoo de NC por primera vez, y con María. Caminamos juntos, comimos los sándwiches deliciosos que ella preparó con tanto cariño y la pasamos increíble. La convencí de subirse a un búfalo para tomarle una foto, y verla reír así me llenó el corazón. Después pasamos por la tienda de recuerdos y volvimos en bus al carro, contándonos historias de cuando éramos niños. Un día perfecto, como todos a su lado.</span></figcaption>
+      <figcaption>
+        <span class="cap-date" lang="es">18 de julio</span><span class="cap-date" lang="it">18 luglio</span>
+        <span class="cap-text" lang="es">Fui al zoo de NC por primera vez, y con Mariachiara. Caminamos juntos, comimos los sándwiches deliciosos que ella preparó con tanto cariño y la pasamos increíble. La convencí de subirse a un búfalo para tomarle una foto, y verla reír así me llenó el corazón. Después pasamos por la tienda de recuerdos y volvimos en bus al carro, contándonos historias de cuando éramos niños. Un día perfecto, como todos a su lado.</span><span class="cap-text" lang="it">Sono andato allo zoo della Carolina del Nord per la prima volta, e con Mariachiara. Abbiamo camminato insieme, abbiamo mangiato i panini deliziosi che lei aveva preparato con tanto affetto e ci siamo divertiti un sacco. L'ho convinta a salire su un bisonte per farle una foto, e vederla ridere così mi ha riempito il cuore. Poi siamo passati dal negozio di souvenir e siamo tornati alla macchina in autobus, raccontandoci storie di quando eravamo bambini. Una giornata perfetta, come tutte quelle al suo fianco.</span>
+      </figcaption>
     </figure>
 
     <figure class="tall">
       <img src="fotos/05-ronquidos.jpg" width="1012" height="1800" alt="Durmiendo en mi pecho" loading="lazy" data-i="3">
-      <figcaption><span class="cap-date">25 de abril</span><span class="cap-text">De los primeros días que se quedaba en casa. Se quedó dormida encima de mí, y sus ronquidos son la música más bonita que conozco. No me muevo ni un milímetro para no despertarla; podría quedarme así toda la vida.</span></figcaption>
+      <figcaption>
+        <span class="cap-date" lang="es">25 de abril</span><span class="cap-date" lang="it">25 aprile</span>
+        <span class="cap-text" lang="es">De los primeros días que se quedaba en casa. Se quedó dormida encima de mí, y sus ronquidos son la música más bonita que conozco. No me muevo ni un milímetro para no despertarla; podría quedarme así toda la vida.</span><span class="cap-text" lang="it">Uno dei primi giorni in cui si fermava a casa mia. Si è addormentata sopra di me, e il suo russare è la musica più bella che conosca. Non mi muovo di un millimetro per non svegliarla; potrei restare così per tutta la vita.</span>
+      </figcaption>
     </figure>
 
-    <p>Cada comida que me hiciste me sabía a gloria, no porque estuviera exagerando, sino porque la hiciste con tus manos. Para mí, todo lo que tus manos y tu corazón pudieran cocinar era lo mejor que yo podía comer ese día, porque lo hacías desde el corazón.</p>
+    <p lang="es">Cada comida que me hiciste me sabía a gloria, no porque estuviera exagerando, sino porque la hiciste con tus manos. Para mí, todo lo que tus manos y tu corazón pudieran cocinar era lo mejor que yo podía comer ese día, porque lo hacías desde el corazón.</p>
+    <p lang="it">Ogni piatto che mi hai preparato sapeva di paradiso, e non perché stessi esagerando, ma perché l'avevi fatto con le tue mani. Per me, tutto ciò che le tue mani e il tuo cuore potevano cucinare era la cosa migliore che potessi mangiare quel giorno, perché lo facevi con il cuore.</p>
 
-    <p>Cada vez que me contabas sobre tu infancia en Italia &mdash;cómo cogías caracoles en la parte de atrás de tu casa, las plantas enredaderas, los pequeños barcos que hacía tu abuelo en madera&mdash; eran las mejores historias que había escuchado, porque era el origen de la persona que se estaba convirtiendo poco a poco en mi todo.</p>
+    <p lang="es">Cada vez que me contabas sobre tu infancia en Italia &mdash;cómo cogías caracoles en la parte de atrás de tu casa, las plantas enredaderas, los pequeños barcos que hacía tu abuelo en madera&mdash; eran las mejores historias que había escuchado, porque era el origen de la persona que se estaba convirtiendo poco a poco en mi todo.</p>
+    <p lang="it">Ogni volta che mi raccontavi della tua infanzia in Italia &mdash;di come raccoglievi le lumache dietro casa, delle piante rampicanti, delle barchette di legno che costruiva tuo nonno&mdash; erano le storie più belle che avessi mai sentito, perché erano l'origine della persona che, a poco a poco, stava diventando il mio tutto.</p>
 
-    <p>Nunca pensé enamorarme tanto de una persona al punto de escribir una carta como esta. Siempre pensé que el amor era simplemente una mezcla de fluidos en el cerebro que producía dopamina, pero me enseñaste que el amor se trata de hacer sacrificios por la otra persona. Créeme cuando te digo que hice mi mejor esfuerzo día tras día por ser la mejor versión de mí, por convertirme en el mejor novio, el mejor esposo y padre que pudiera ser, porque sé que un día mi hijo me va a ver y me va a preguntar cómo ser un buen hombre, y tengo que estar listo para decírselo.</p>
+    <p lang="es">Nunca pensé enamorarme tanto de una persona al punto de escribir una carta como esta. Siempre pensé que el amor era simplemente una mezcla de fluidos en el cerebro que producía dopamina, pero me enseñaste que el amor se trata de hacer sacrificios por la otra persona. Créeme cuando te digo que hice mi mejor esfuerzo día tras día por ser la mejor versión de mí, por convertirme en el mejor novio, el mejor esposo y padre que pudiera ser, porque sé que un día mi hijo me va a ver y me va a preguntar cómo ser un buen hombre, y tengo que estar listo para decírselo.</p>
+    <p lang="it">Non avrei mai pensato di innamorarmi così tanto di una persona da arrivare a scrivere una lettera come questa. Ho sempre pensato che l'amore fosse semplicemente un miscuglio di sostanze nel cervello che produce dopamina, ma tu mi hai insegnato che l'amore significa fare sacrifici per l'altra persona. Credimi quando ti dico che ho fatto del mio meglio, giorno dopo giorno, per essere la versione migliore di me stesso, per diventare il miglior fidanzato, il miglior marito e padre che potessi essere, perché so che un giorno mio figlio mi guarderà e mi chiederà come si diventa un uomo buono, e io devo essere pronto a dirglielo.</p>
 
     <figure>
       <img src="fotos/06-romantico.jpg" width="1800" height="1350" alt="Tú, hermosa" loading="lazy" data-i="4">
-      <figcaption><span class="cap-date">23 de agosto</span><span class="cap-text">Qué preciosa se ve. Me invitó a ver un museo del Titanic, y entre tanta historia, ella era lo más bonito del lugar. Tengo que planear un crucero con ella: quiero ver el océano a su lado.</span></figcaption>
+      <figcaption>
+        <span class="cap-date" lang="es">23 de agosto</span><span class="cap-date" lang="it">23 agosto</span>
+        <span class="cap-text" lang="es">Qué preciosa se ve. Me invitó a ver un museo del Titanic, y entre tanta historia, ella era lo más bonito del lugar. Tengo que planear un crucero con ella: quiero ver el océano a su lado.</span><span class="cap-text" lang="it">Com'è splendida. Mi ha invitato a vedere un museo del Titanic e, tra tanta storia, lei era la cosa più bella del posto. Devo organizzare una crociera con lei: voglio vedere l'oceano al suo fianco.</span>
+      </figcaption>
     </figure>
 
-    <h2>Lo que siempre quisiste saber de mí</h2>
+    <h2><span lang="es">Lo que siempre quisiste saber de mí</span><span lang="it">Quello che hai sempre voluto sapere di me</span></h2>
 
-    <p class="aside">Esto que estoy a punto de contarte nadie en mi vida lo ha escuchado; nunca se lo he contado a nadie. Pero si esta es la última vez que nos vamos a ver, quiero darte, como regalo, un vistazo a lo más profundo de mi ser y de mi corazón.</p>
+    <p class="aside" lang="es">Esto que estoy a punto de contarte nadie en mi vida lo ha escuchado; nunca se lo he contado a nadie. Pero si esta es la última vez que nos vamos a ver, quiero darte, como regalo, un vistazo a lo más profundo de mi ser y de mi corazón.</p>
+    <p class="aside" lang="it">Quello che sto per raccontarti non l'ha mai sentito nessuno nella mia vita; non l'ho mai raccontato a nessuno. Ma se questa è l'ultima volta che ci vediamo, voglio regalarti uno sguardo su ciò che c'è di più profondo nel mio essere e nel mio cuore.</p>
 
-    <p>Algo que siempre me pediste fue conocer un poco de mi infancia, así que quiero contarte por qué soy como soy. Desde pequeño siempre fui muy terco. Fui un niño bastante problemático, y me la pasaba en la rectoría del colegio por no portarme bien o no hacer lo que tenía que hacer. La gente no entendía por qué era así, siendo tan inteligente como decían que era.</p>
+    <p lang="es">Algo que siempre me pediste fue conocer un poco de mi infancia, así que quiero contarte por qué soy como soy. Desde pequeño siempre fui muy terco. Fui un niño bastante problemático, y me la pasaba en la rectoría del colegio por no portarme bien o no hacer lo que tenía que hacer. La gente no entendía por qué era así, siendo tan inteligente como decían que era.</p>
+    <p lang="it">Una cosa che mi hai sempre chiesto è di conoscere un po' la mia infanzia, quindi voglio raccontarti perché sono come sono. Fin da piccolo sono sempre stato molto testardo. Ero un bambino piuttosto difficile, e passavo il tempo in presidenza perché non mi comportavo bene o non facevo quello che dovevo fare. La gente non capiva perché fossi così, pur essendo intelligente come tutti dicevano.</p>
 
     <figure>
       <img src="fotos/02-infancia.jpg" width="1800" height="1350" alt="Mi mamá conmigo de bebé" loading="lazy" data-i="5">
-      <figcaption>Mi mamá y yo</figcaption>
+      <figcaption><span class="cap-date" lang="es">Mi mamá y yo</span><span class="cap-date" lang="it">La mia mamma e io</span></figcaption>
     </figure>
 
-    <p>Desde pequeño siempre fui un niño que sabía que era diferente, que no creía todo lo que me decían; siempre estaba en busca de la verdad y de aprender. Siempre fui muy curioso para todo, y mi hambre de aprender parecía que nunca terminaba. Todos mis amigos siempre notaron la madurez que tanto me caracteriza, y desde entonces me apodaron &ldquo;El Patro&rdquo;, porque solucionaba los problemas de todos, ya fuera adentro o afuera en la calle. Además, siempre fui el psicólogo de mis amigos, tratando de sugerir la mejor manera de reconciliar sus relaciones, lo cual me obligó a aprender sobre el amor y la psicología.</p>
+    <p lang="es">Desde pequeño siempre fui un niño que sabía que era diferente, que no creía todo lo que me decían; siempre estaba en busca de la verdad y de aprender. Siempre fui muy curioso para todo, y mi hambre de aprender parecía que nunca terminaba. Todos mis amigos siempre notaron la madurez que tanto me caracteriza, y desde entonces me apodaron &ldquo;El Patro&rdquo;, porque solucionaba los problemas de todos, ya fuera adentro o afuera en la calle. Además, siempre fui el psicólogo de mis amigos, tratando de sugerir la mejor manera de reconciliar sus relaciones, lo cual me obligó a aprender sobre el amor y la psicología.</p>
+    <p lang="it">Fin da piccolo sono sempre stato un bambino che sapeva di essere diverso, che non credeva a tutto quello che gli dicevano; ero sempre alla ricerca della verità e di cose da imparare. Sono sempre stato curiosissimo di tutto, e la mia fame di imparare sembrava non finire mai. Tutti i miei amici hanno sempre notato la maturità che tanto mi caratterizza, e da allora mi hanno soprannominato &ldquo;El Patro&rdquo;, perché risolvevo i problemi di tutti, che fosse dentro o fuori, per strada. Inoltre, sono sempre stato lo psicologo dei miei amici, cercando di suggerire il modo migliore per sistemare le loro relazioni, cosa che mi ha spinto a imparare tanto sull'amore e sulla psicologia.</p>
 
-    <p>Durante un tiempo mi vida se tornó muy difícil por problemas económicos, pero no me dejé rendir por eso. Nunca le reproché nada a mi madre, porque sabía que ella estaba dando todo lo que tenía. Verla sufrir por problemas económicos me hizo prometerle a Dios que nunca más ella, ni mi esposa, tendrían que preocuparse por qué íbamos a comer o de dónde vendría nuestra siguiente comida. Tuvimos que mudarnos, entre muchas otras cosas.</p>
+    <p lang="es">Durante un tiempo mi vida se tornó muy difícil por problemas económicos, pero no me dejé rendir por eso. Nunca le reproché nada a mi madre, porque sabía que ella estaba dando todo lo que tenía. Verla sufrir por problemas económicos me hizo prometerle a Dios que nunca más ella, ni mi esposa, tendrían que preocuparse por qué íbamos a comer o de dónde vendría nuestra siguiente comida. Tuvimos que mudarnos, entre muchas otras cosas.</p>
+    <p lang="it">Per un periodo la mia vita è diventata molto difficile per problemi economici, ma non mi sono lasciato abbattere. Non ho mai rimproverato niente a mia madre, perché sapevo che stava dando tutto quello che aveva. Vederla soffrire per i problemi economici mi ha fatto promettere a Dio che mai più né lei né mia moglie avrebbero dovuto preoccuparsi di cosa avremmo mangiato o da dove sarebbe arrivato il nostro prossimo pasto. Abbiamo dovuto traslocare, tra tante altre cose.</p>
 
-    <p>No crecí rodeado de muchos lujos, ya que mi padre falleció cuando yo tenía meses de nacido. No tener una figura paterna me marcó mucho. Esto hacía que le preguntara a mi mamá todas las noches cuándo vendría mi papá, por qué mi papá no me amaba y no venía a buscarme, qué había hecho mal para que él no quisiera estar conmigo. Mi mamá no sabía cómo responder, y lloraba diciéndome que no era mi culpa, sin saber cómo explicarme qué era la muerte y cómo había fallecido. Simplemente decía que había sido Dios quien se lo había llevado, sin que yo supiera realmente qué significaba eso.</p>
+    <p lang="es">No crecí rodeado de muchos lujos, ya que mi padre falleció cuando yo tenía meses de nacido. No tener una figura paterna me marcó mucho. Esto hacía que le preguntara a mi mamá todas las noches cuándo vendría mi papá, por qué mi papá no me amaba y no venía a buscarme, qué había hecho mal para que él no quisiera estar conmigo. Mi mamá no sabía cómo responder, y lloraba diciéndome que no era mi culpa, sin saber cómo explicarme qué era la muerte y cómo había fallecido. Simplemente decía que había sido Dios quien se lo había llevado, sin que yo supiera realmente qué significaba eso.</p>
+    <p lang="it">Non sono cresciuto circondato dal lusso, perché mio padre è morto quando avevo pochi mesi. Non avere una figura paterna mi ha segnato molto. Per questo ogni sera chiedevo alla mia mamma quando sarebbe venuto il mio papà, perché il mio papà non mi voleva bene e non veniva a prendermi, cosa avevo fatto di male perché lui non volesse stare con me. La mia mamma non sapeva cosa rispondere, e piangeva dicendomi che non era colpa mia, senza sapere come spiegarmi cos'era la morte e come fosse morto. Diceva semplicemente che era stato Dio a portarselo via, senza che io capissi davvero cosa significasse.</p>
 
-    <p>Durante mucho tiempo fui ateo, porque pensaba: ¿cómo era posible que Dios no me amara y me hubiera arrebatado a mi papá? No me parecía justo. El día del padre en el colegio me escapaba, porque sabía que todos los niños estarían compartiendo, riendo, hablando de lo geniales que eran sus papás, mientras yo tenía la silla vacía donde se suponía que estaría el mío.</p>
+    <p lang="es">Durante mucho tiempo fui ateo, porque pensaba: ¿cómo era posible que Dios no me amara y me hubiera arrebatado a mi papá? No me parecía justo. El día del padre en el colegio me escapaba, porque sabía que todos los niños estarían compartiendo, riendo, hablando de lo geniales que eran sus papás, mientras yo tenía la silla vacía donde se suponía que estaría el mío.</p>
+    <p lang="it">Per molto tempo sono stato ateo, perché pensavo: com'era possibile che Dio non mi amasse e mi avesse strappato via il mio papà? Non mi sembrava giusto. Il giorno della festa del papà a scuola scappavo, perché sapevo che tutti i bambini sarebbero stati lì a condividere, a ridere, a raccontare quanto fossero fantastici i loro papà, mentre io avevo la sedia vuota dove avrebbe dovuto esserci il mio.</p>
 
-    <p>Te cuento esto para abrirme contigo, porque siento que era algo que me pediste y que nunca hice. No es fácil escribir todo esto, pero es un pedacito de mi historia, y esto me marcó para ser el hombre que soy hoy en día. Juré que cuidaría mi salud, que comería bien para durar muchos años y ver a mis hijos crecer, que haría ejercicio, que sería inteligente, para poder ser el mejor papá y esposo que cualquier familia pudiera tener, porque eso fue algo que ni yo ni mi mamá tuvimos. Estuve años enojado con Dios por quitarme a mi padre, por castigarme, preguntándome qué había hecho yo para merecer eso. Esa es la razón por la que trabajo tan duro, me cuido tanto, y trato de ser el mejor novio y esposo: para poder dar lo que yo nunca tuve.</p>
+    <p lang="es">Te cuento esto para abrirme contigo, porque siento que era algo que me pediste y que nunca hice. No es fácil escribir todo esto, pero es un pedacito de mi historia, y esto me marcó para ser el hombre que soy hoy en día. Juré que cuidaría mi salud, que comería bien para durar muchos años y ver a mis hijos crecer, que haría ejercicio, que sería inteligente, para poder ser el mejor papá y esposo que cualquier familia pudiera tener, porque eso fue algo que ni yo ni mi mamá tuvimos. Estuve años enojado con Dios por quitarme a mi padre, por castigarme, preguntándome qué había hecho yo para merecer eso. Esa es la razón por la que trabajo tan duro, me cuido tanto, y trato de ser el mejor novio y esposo: para poder dar lo que yo nunca tuve.</p>
+    <p lang="it">Ti racconto tutto questo per aprirmi con te, perché sento che era qualcosa che mi avevi chiesto e che non ho mai fatto. Non è facile scrivere tutto questo, ma è un pezzetto della mia storia, e mi ha segnato fino a farmi diventare l'uomo che sono oggi. Ho giurato che mi sarei preso cura della mia salute, che avrei mangiato bene per vivere tanti anni e veder crescere i miei figli, che avrei fatto esercizio, che sarei stato intelligente, per poter essere il miglior papà e marito che una famiglia potesse avere, perché è qualcosa che né io né la mia mamma abbiamo avuto. Per anni sono stato arrabbiato con Dio perché mi aveva tolto mio padre, perché mi aveva punito, chiedendomi cosa avessi fatto per meritarlo. È per questo che lavoro così duramente, che mi prendo tanta cura di me, e che cerco di essere il miglior fidanzato e marito: per poter dare quello che io non ho mai avuto.</p>
 
-    <p>Pero hubo varios momentos de mi vida en los que estuve cerca de la muerte, y, como si un ángel del cielo me protegiera, salí sano y salvo de cada uno de ellos. Era como si el universo me estuviera diciendo: <em>&ldquo;aquí estoy, no te castigué, no estoy enojado, y te voy a proteger siempre.&rdquo;</em> Desde esos momentos volví a creer en Dios.</p>
+    <p lang="es">Pero hubo varios momentos de mi vida en los que estuve cerca de la muerte, y, como si un ángel del cielo me protegiera, salí sano y salvo de cada uno de ellos. Era como si el universo me estuviera diciendo: <em>&ldquo;aquí estoy, no te castigué, no estoy enojado, y te voy a proteger siempre.&rdquo;</em> Desde esos momentos volví a creer en Dios.</p>
+    <p lang="it">Ma ci sono stati diversi momenti della mia vita in cui sono stato vicino alla morte e, come se un angelo dal cielo mi proteggesse, ne sono uscito sano e salvo ogni volta. Era come se l'universo mi stesse dicendo: <em>&ldquo;sono qui, non ti ho punito, non sono arrabbiato, e ti proteggerò sempre.&rdquo;</em> Da quei momenti ho ricominciato a credere in Dio.</p>
 
-    <h2>Lo que admiro de ti</h2>
+    <h2><span lang="es">Lo que admiro de ti</span><span lang="it">Quello che ammiro di te</span></h2>
 
-    <p>Sin importar todo lo que pasó entre nosotros, nunca quiero que las partes difíciles de nuestra relación borren todo lo hermoso que vi en ti ni todo lo que trajiste a mi vida. No cambiaría nada si cambiarlo significara arriesgarme a nunca haberte conocido, porque gracias a ti soy una mejor persona, y siempre estaré agradecido por eso. Hay tantas cosas que admiro de ti que probablemente nunca te dije lo suficiente.</p>
+    <p lang="es">Sin importar todo lo que pasó entre nosotros, nunca quiero que las partes difíciles de nuestra relación borren todo lo hermoso que vi en ti ni todo lo que trajiste a mi vida. No cambiaría nada si cambiarlo significara arriesgarme a nunca haberte conocido, porque gracias a ti soy una mejor persona, y siempre estaré agradecido por eso. Hay tantas cosas que admiro de ti que probablemente nunca te dije lo suficiente.</p>
+    <p lang="it">Nonostante tutto quello che è successo tra noi, non voglio mai che le parti difficili della nostra relazione cancellino tutto il bello che ho visto in te né tutto ciò che hai portato nella mia vita. Non cambierei niente se cambiarlo significasse rischiare di non averti mai conosciuta, perché grazie a te sono una persona migliore, e te ne sarò sempre grato. Ci sono così tante cose che ammiro di te che probabilmente non ti ho mai detto abbastanza.</p>
 
     <figure class="tall">
       <img src="fotos/07-admiro.jpg" width="1012" height="1800" alt="Tú cocinando" loading="lazy" data-i="6">
-      <figcaption><span class="cap-date">10 de mayo</span><span class="cap-text">Hicimos pasta juntos: ravioles, mis favoritos. Me encanta ver cómo se esmera en que todo quede perfecto para mí; por eso cocino a su lado, porque cada minuto con ella es un regalo. Los mejores ravioles de mi vida, porque los hicimos juntos.</span></figcaption>
+      <figcaption>
+        <span class="cap-date" lang="es">10 de mayo</span><span class="cap-date" lang="it">10 maggio</span>
+        <span class="cap-text" lang="es">Hicimos pasta juntos: ravioles, mis favoritos. Me encanta ver cómo se esmera en que todo quede perfecto para mí; por eso cocino a su lado, porque cada minuto con ella es un regalo. Los mejores ravioles de mi vida, porque los hicimos juntos.</span><span class="cap-text" lang="it">Abbiamo fatto la pasta insieme: ravioli, i miei preferiti. Adoro vedere come si impegna perché tutto venga perfetto per me; per questo cucino al suo fianco, perché ogni minuto con lei è un regalo. I ravioli più buoni della mia vita, perché li abbiamo fatti insieme.</span>
+      </figcaption>
     </figure>
 
-    <p>Admiro profundamente tu sentido del humor, porque es tontito pero siempre tiene en cuenta a los demás. Amo tu risa, tus chistes tontos y la manera en que me hacías reír cuando menos lo esperaba. Admiro tu sentido de la justicia y la manera en que te importan las personas que a veces no pueden defenderse: nunca le has tenido miedo a defender a alguien que crees que está siendo tratado injustamente, especialmente a quienes tienen menos, no tienen voz, o están siendo intimidados. Eso es algo de ti que respeto genuinamente, y espero que nunca lo pierdas.</p>
+    <p lang="es">Admiro profundamente tu sentido del humor, porque es tontito pero siempre tiene en cuenta a los demás. Amo tu risa, tus chistes tontos y la manera en que me hacías reír cuando menos lo esperaba. Admiro tu sentido de la justicia y la manera en que te importan las personas que a veces no pueden defenderse: nunca le has tenido miedo a defender a alguien que crees que está siendo tratado injustamente, especialmente a quienes tienen menos, no tienen voz, o están siendo intimidados. Eso es algo de ti que respeto genuinamente, y espero que nunca lo pierdas.</p>
+    <p lang="it">Ammiro profondamente il tuo senso dell'umorismo, perché è un po' scemo ma tiene sempre conto degli altri. Amo la tua risata, le tue battute sceme e il modo in cui mi facevi ridere quando meno me lo aspettavo. Ammiro il tuo senso di giustizia e il modo in cui ti stanno a cuore le persone che a volte non possono difendersi: non hai mai avuto paura di difendere qualcuno che credi venga trattato ingiustamente, soprattutto chi ha meno, chi non ha voce o chi subisce prepotenze. È una cosa di te che rispetto sinceramente, e spero che tu non la perda mai.</p>
 
     <figure class="tall">
       <img src="fotos/08-risa.jpg" width="1012" height="1800" alt="Tu risa" loading="lazy" data-i="7">
-      <figcaption><span class="cap-date">3 de mayo</span><span class="cap-text">Esa risa fue lo que me enamoró de ella. Daría lo que fuera por verla reír así cada día de mi vida. Ahí, en esa playa, supe que quería compartir todos mis días con ella.</span></figcaption>
+      <figcaption>
+        <span class="cap-date" lang="es">3 de mayo</span><span class="cap-date" lang="it">3 maggio</span>
+        <span class="cap-text" lang="es">Esa risa fue lo que me enamoró de ella. Daría lo que fuera por verla reír así cada día de mi vida. Ahí, en esa playa, supe que quería compartir todos mis días con ella.</span><span class="cap-text" lang="it">È stata quella risata a farmi innamorare di lei. Darei qualsiasi cosa per vederla ridere così ogni giorno della mia vita. Lì, su quella spiaggia, ho capito che volevo condividere tutti i miei giorni con lei.</span>
+      </figcaption>
     </figure>
 
-    <p>Amo la manera en la que siempre puedes encontrar algo bueno incluso en las peores situaciones, cómo siempre le sacas un chiste o ves que no es tan malo como parece. Amo también que no le tienes miedo a la vida, que puedes vivir como si hoy fuera tu último día. Gracias por enseñarme que hay más en la vida que planearlo todo; trajiste espontaneidad a mi vida de una manera que no sabía que necesitaba, la forma en que bailabas conmigo, tu dulzura, y todas las pequeñas maneras en las que me mostrabas cariño y me hacían sentir amado.</p>
+    <p lang="es">Amo la manera en la que siempre puedes encontrar algo bueno incluso en las peores situaciones, cómo siempre le sacas un chiste o ves que no es tan malo como parece. Amo también que no le tienes miedo a la vida, que puedes vivir como si hoy fuera tu último día. Gracias por enseñarme que hay más en la vida que planearlo todo; trajiste espontaneidad a mi vida de una manera que no sabía que necesitaba, la forma en que bailabas conmigo, tu dulzura, y todas las pequeñas maneras en las que me mostrabas cariño y me hacían sentir amado.</p>
+    <p lang="it">Amo il modo in cui riesci sempre a trovare qualcosa di buono anche nelle situazioni peggiori, come ci trovi sempre una battuta o vedi che non è poi così grave come sembra. Amo anche che tu non abbia paura della vita, che tu riesca a vivere come se oggi fosse il tuo ultimo giorno. Grazie per avermi insegnato che nella vita c'è di più che pianificare tutto; hai portato nella mia vita una spontaneità di cui non sapevo di aver bisogno, il modo in cui ballavi con me, la tua dolcezza, e tutti i piccoli modi in cui mi dimostravi affetto e mi facevi sentire amato.</p>
 
-    <p>Amo lo buena que eres con los niños. Me enamoré de todo el amor que tienes hacia ellos de forma incondicional, tu manera de compaginar con ellos y entender su naturaleza, porque sé que a ti te hubiera gustado tener a alguien así cuando eras pequeña, y de alguna manera has decidido: <em>&ldquo;tal vez yo no tuve esto, pero sí voy a tratar de dárselo a ellos, porque lo merecen, así yo no lo haya tenido.&rdquo;</em></p>
+    <p lang="es">Amo lo buena que eres con los niños. Me enamoré de todo el amor que tienes hacia ellos de forma incondicional, tu manera de compaginar con ellos y entender su naturaleza, porque sé que a ti te hubiera gustado tener a alguien así cuando eras pequeña, y de alguna manera has decidido: <em>&ldquo;tal vez yo no tuve esto, pero sí voy a tratar de dárselo a ellos, porque lo merecen, así yo no lo haya tenido.&rdquo;</em></p>
+    <p lang="it">Amo quanto sei brava con i bambini. Mi sono innamorato di tutto l'amore incondizionato che hai per loro, del tuo modo di entrare in sintonia con loro e di capire la loro natura, perché so che a te sarebbe piaciuto avere qualcuno così quando eri piccola, e in qualche modo hai deciso: <em>&ldquo;forse io non l'ho avuto, ma cercherò di darlo a loro, perché se lo meritano, anche se io non l'ho avuto.&rdquo;</em></p>
 
-    <p>Estoy agradecido por el tiempo que me diste, los lugares a los que fuimos, las conversaciones que tuvimos, las noches en las que hablábamos durante seis horas seguidas y solo nos reíamos, las cosas que vivimos juntos, el amor y la intimidad que compartimos cuando nos convertimos en uno, y todos los recuerdos que ahora son parte de mi vida porque tú estuviste en ella.</p>
+    <p lang="es">Estoy agradecido por el tiempo que me diste, los lugares a los que fuimos, las conversaciones que tuvimos, las noches en las que hablábamos durante seis horas seguidas y solo nos reíamos, las cosas que vivimos juntos, el amor y la intimidad que compartimos cuando nos convertimos en uno, y todos los recuerdos que ahora son parte de mi vida porque tú estuviste en ella.</p>
+    <p lang="it">Sono grato per il tempo che mi hai dato, per i posti in cui siamo andati, per le conversazioni che abbiamo avuto, per le notti in cui parlavamo per sei ore di fila e non facevamo altro che ridere, per le cose che abbiamo vissuto insieme, per l'amore e l'intimità che abbiamo condiviso quando siamo diventati una cosa sola, e per tutti i ricordi che ora fanno parte della mia vita perché tu ci sei stata.</p>
 
-    <h2>Lo que espero para ti</h2>
+    <h2><span lang="es">Lo que espero para ti</span><span lang="it">Quello che spero per te</span></h2>
 
-    <p>Espero que encuentres lo que realmente quieres de tu vida y le pongas todo el corazón. Genuinamente creo que puedes tener un impacto en este mundo porque te importan profundamente las personas. Espero que descubras exactamente dónde quieres poner esa parte de ti y construyas una vida de la que te sientas orgullosa.</p>
+    <p lang="es">Espero que encuentres lo que realmente quieres de tu vida y le pongas todo el corazón. Genuinamente creo que puedes tener un impacto en este mundo porque te importan profundamente las personas. Espero que descubras exactamente dónde quieres poner esa parte de ti y construyas una vida de la que te sientas orgullosa.</p>
+    <p lang="it">Spero che tu trovi quello che vuoi davvero dalla tua vita e che ci metta tutto il cuore. Credo sinceramente che tu possa lasciare un segno in questo mondo, perché le persone ti stanno profondamente a cuore. Spero che tu scopra esattamente dove vuoi mettere quella parte di te e che costruisca una vita di cui sentirti orgogliosa.</p>
 
-    <p>Y sin importar hacia dónde nos lleven nuestras vidas de aquí en adelante, una parte de ti siempre tendrá un lugar en mi corazón. Te amé, te amo, y siempre estaré agradecido de que nuestras vidas se hayan cruzado. Estoy orgulloso de ti por todas las cosas hermosas que vi en ti, y espero que algún día puedas mirar atrás a nuestro tiempo juntos y recordar también las partes hermosas.</p>
+    <p lang="es">Y sin importar hacia dónde nos lleven nuestras vidas de aquí en adelante, una parte de ti siempre tendrá un lugar en mi corazón. Te amé, te amo, y siempre estaré agradecido de que nuestras vidas se hayan cruzado. Estoy orgulloso de ti por todas las cosas hermosas que vi en ti, y espero que algún día puedas mirar atrás a nuestro tiempo juntos y recordar también las partes hermosas.</p>
+    <p lang="it">E ovunque ci portino le nostre vite da qui in avanti, una parte di te avrà sempre un posto nel mio cuore. Ti ho amata, ti amo, e sarò sempre grato che le nostre vite si siano incrociate. Sono orgoglioso di te per tutte le cose belle che ho visto in te, e spero che un giorno tu possa guardare indietro al nostro tempo insieme e ricordare anche le parti belle.</p>
 
-    <p>Honestamente hay tantas cosas más que podría escribir que probablemente no cabrían todas en una sola página. Este mundo es un mejor lugar porque tú estás en él, y mi corazón es más grande porque tú estuviste en él. Me enseñaste a demostrar mejor el amor, a expresarlo más abiertamente, y a permitirme vivir cosas que quizás, de otra forma, habría estado demasiado ocupado planeando como para experimentar.</p>
+    <p lang="es">Honestamente hay tantas cosas más que podría escribir que probablemente no cabrían todas en una sola página. Este mundo es un mejor lugar porque tú estás en él, y mi corazón es más grande porque tú estuviste en él. Me enseñaste a demostrar mejor el amor, a expresarlo más abiertamente, y a permitirme vivir cosas que quizás, de otra forma, habría estado demasiado ocupado planeando como para experimentar.</p>
+    <p lang="it">Sinceramente ci sono così tante altre cose che potrei scrivere che probabilmente non starebbero tutte in una sola pagina. Questo mondo è un posto migliore perché ci sei tu, e il mio cuore è più grande perché tu ci sei stata. Mi hai insegnato a dimostrare meglio l'amore, a esprimerlo più apertamente, e a concedermi di vivere cose che forse, altrimenti, sarei stato troppo impegnato a pianificare per viverle davvero.</p>
 
     <figure class="tall">
       <img src="fotos/09-despedida.jpg" width="1012" height="1800" alt="Nosotros" loading="lazy" data-i="8">
     </figure>
 
     <div class="close">
-      <p class="thanks">Gracias. Gracias. Gracias.<br>Gracias por todo lo hermoso que me diste.</p>
-      <p class="signoff">Te amo.</p>
+      <p class="thanks"><span lang="es">Gracias. Gracias. Gracias.<br>Gracias por todo lo hermoso que me diste.</span><span lang="it">Grazie. Grazie. Grazie.<br>Grazie per tutto il bello che mi hai dato.</span></p>
+      <p class="signoff">Ti amerò per sempre,<br>in ogni lingua che conosco.</p>
     </div>
 
   </main>
@@ -288,18 +352,20 @@
 
 <script>
 (function(){
+  var root=document.documentElement;
+  function lang(){ return root.getAttribute('data-lang')==='it' ? 'it' : 'es'; }
+
   var imgs = Array.prototype.slice.call(document.querySelectorAll('figure img[data-i]'));
-  var srcs = imgs.map(function(im){
-    var cap=im.parentNode.querySelector('figcaption'),
-        d=cap && cap.querySelector('.cap-date'), t=cap && cap.querySelector('.cap-text');
-    return {src: im.getAttribute('src'), alt: im.alt,
-            date: d ? d.textContent : (cap && !t ? cap.textContent : ''),
-            text: t ? t.textContent : ''};
-  });
   var lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'),
       lbCount=document.getElementById('lbCount'), lbCap=document.getElementById('lbCap'),
       lbDate=document.getElementById('lbDate'), lbText=document.getElementById('lbText'), i=0;
 
+  // Caption of a photo in the language currently shown
+  function caption(im){
+    var cap=im.parentNode.querySelector('figcaption'), l=lang();
+    function pick(cls){ var el=cap && cap.querySelector('.'+cls+'[lang="'+l+'"]'); return el ? el.textContent : ''; }
+    return {date: pick('cap-date'), text: pick('cap-text')};
+  }
   // Leave room under the photo for its caption
   function fit(){
     var capH = lbCap.hidden ? 0 : lbCap.offsetHeight + 16;
@@ -307,17 +373,17 @@
     lbImg.style.maxHeight = Math.max(160, window.innerHeight - capH - reserve) + 'px';
   }
   function show(n){
-    i=(n+srcs.length)%srcs.length;
-    var s=srcs[i];
-    lbImg.src=s.src; lbImg.alt=s.alt;
-    lbDate.textContent=s.date; lbText.textContent=s.text;
-    lbDate.hidden=!s.date; lbText.hidden=!s.text; lbCap.hidden=!s.date && !s.text;
-    lbCount.textContent=(i+1)+' / '+srcs.length;
+    i=(n+imgs.length)%imgs.length;
+    var im=imgs[i], c=caption(im);
+    lbImg.src=im.getAttribute('src'); lbImg.alt=im.alt;
+    lbDate.textContent=c.date; lbText.textContent=c.text;
+    lbDate.hidden=!c.date; lbText.hidden=!c.text; lbCap.hidden=!c.date && !c.text;
+    lbCount.textContent=(i+1)+' / '+imgs.length;
     fit();
   }
   function open(n){ lb.classList.add('open'); document.body.classList.add('lb-lock'); show(n); }
-  window.addEventListener('resize', function(){ if(lb.classList.contains('open')) fit(); });
   function close(){ lb.classList.remove('open'); document.body.classList.remove('lb-lock'); }
+  window.addEventListener('resize', function(){ if(lb.classList.contains('open')) fit(); });
 
   imgs.forEach(function(im){
     im.addEventListener('click', function(){ open(parseInt(im.getAttribute('data-i'),10)); });
@@ -344,6 +410,44 @@
     else if(dy>70 && Math.abs(dy)>Math.abs(dx)) close();
     x0=y0=null;
   }, {passive:true});
+
+  // ---------- language toggle ----------
+  // Every Spanish element is immediately followed by its Italian twin.
+  var btn=document.getElementById('langBtn');
+  var ui={
+    es:{btn:'Italiano', btnLabel:'Leggi in italiano', title:'Por si algún día dudas de que te amo', close:'Cerrar', prev:'Anterior', next:'Siguiente'},
+    it:{btn:'Español', btnLabel:'Leer en español', title:'Se mai un giorno dubiterai che ti amo', close:'Chiudi', prev:'Precedente', next:'Successiva'}
+  };
+  function twin(el){ return el.getAttribute('lang')==='es' ? el.nextElementSibling : el.previousElementSibling; }
+  // First thing on screen, so the reader stays in the same place after switching
+  function anchor(){
+    if(window.scrollY < 10) return null;
+    var els=document.querySelectorAll('.sheet figure, .sheet [lang]');
+    for(var k=0;k<els.length;k++){
+      if(!els[k].getClientRects().length) continue;
+      var r=els[k].getBoundingClientRect();
+      if(r.bottom>0) return {el:els[k], top:r.top};
+    }
+    return null;
+  }
+  function setLang(l){
+    var a=anchor();
+    if(l==='it') root.setAttribute('data-lang','it'); else root.removeAttribute('data-lang');
+    root.lang=l;
+    var t=ui[l];
+    document.title=t.title; btn.textContent=t.btn; btn.setAttribute('aria-label',t.btnLabel);
+    document.getElementById('lbClose').setAttribute('aria-label',t.close);
+    document.getElementById('lbPrev').setAttribute('aria-label',t.prev);
+    document.getElementById('lbNext').setAttribute('aria-label',t.next);
+    if(a){
+      var target=a.el.hasAttribute('lang') ? twin(a.el) : a.el;
+      if(target) window.scrollBy(0, target.getBoundingClientRect().top - a.top);
+    }
+    if(lb.classList.contains('open')) show(i);
+    try{ localStorage.setItem('lang', l); }catch(e){}
+  }
+  btn.addEventListener('click', function(){ setLang(lang()==='it' ? 'es' : 'it'); });
+  if(lang()==='it') setLang('it');
 })();
 </script>
 </body>
