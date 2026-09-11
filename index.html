@@ -10,6 +10,7 @@
     document.documentElement.setAttribute('data-lang','it');
     document.documentElement.lang='it'; document.title='Se mai un giorno dubiterai che ti amo';
   } }catch(e){}
+  try{ if(localStorage.getItem('unlocked')==='1') document.documentElement.classList.add('unlocked'); }catch(e){}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,6 +55,47 @@
     transition:color .2s,border-color .2s;-webkit-tap-highlight-color:transparent;
   }
   .lang:hover,.lang:focus-visible{color:var(--accent);border-color:var(--accent);outline:none}
+
+  /* ---------- password gate ---------- */
+  :root:not(.unlocked) body{overflow:hidden}
+  :root:not(.unlocked) .sheet{visibility:hidden}
+  :root:not(.unlocked) .fade{animation-play-state:paused}
+  :root.unlocked .gate:not(.leaving){display:none}
+  .gate{
+    position:fixed;inset:0;z-index:45;display:flex;align-items:center;justify-content:center;
+    background:var(--paper);padding-block:1.5rem;padding-inline:1.5rem;text-align:center;
+    transition:opacity .6s ease;
+  }
+  .gate.leaving{opacity:0;pointer-events:none}
+  .gate form{max-width:22rem}
+  .gate-title{
+    font-size:clamp(2rem,8vw,2.75rem);font-weight:300;font-style:italic;line-height:1.15;
+    margin:0 0 2.25rem;color:var(--ink);text-wrap:balance;
+  }
+  .gate-input{
+    display:block;width:9rem;margin:0 auto;padding:.25rem 0 .5rem;
+    font:inherit;font-size:2rem;letter-spacing:.5em;text-indent:.5em;text-align:center;
+    color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--rule);
+    border-radius:0;outline:none;transition:border-color .2s;
+  }
+  .gate-input:focus{border-color:var(--accent)}
+  .gate-label{
+    font-family:Inter,system-ui,sans-serif;font-size:.6875rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-faint);margin:1rem 0 0;
+  }
+  .gate-error{font-style:italic;color:var(--accent);margin:.75rem 0 0}
+  .gate-btn{
+    margin-top:1.5rem;padding:.6rem 1.4rem;cursor:pointer;
+    font-family:Inter,system-ui,sans-serif;font-size:.6875rem;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);
+    background:transparent;border:1px solid var(--rule);border-radius:999px;
+    transition:color .2s,border-color .2s;-webkit-tap-highlight-color:transparent;
+  }
+  .gate-btn:hover,.gate-btn:focus-visible{color:var(--accent);border-color:var(--accent);outline:none}
+  @media (prefers-reduced-motion: no-preference){
+    .shake{animation:shake .4s}
+    @keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+  }
 
   /* ---------- opening ---------- */
   header{text-align:center;margin-bottom:clamp(3rem,8vw,4.5rem)}
@@ -178,6 +220,17 @@
 </head>
 <body>
 <button class="lang" id="langBtn" type="button" aria-label="Leggi in italiano">Italiano</button>
+
+<div class="gate" id="gate">
+  <form id="gateForm" autocomplete="off">
+    <p class="eyebrow"><span lang="es">Para ti, Mariachiara</span><span lang="it">Per te, Mariachiara</span></p>
+    <p class="gate-title"><span lang="es">Esta página es solo para ti</span><span lang="it">Questa pagina è solo per te</span></p>
+    <input class="gate-input" id="gateInput" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" aria-label="Contraseña" autofocus>
+    <p class="gate-label"><span lang="es">Escribe la contraseña</span><span lang="it">Inserisci la password</span></p>
+    <p class="gate-error" id="gateError" aria-live="polite" hidden><span lang="es">Esa no es. Inténtalo otra vez.</span><span lang="it">Non è quella. Riprova.</span></p>
+    <button class="gate-btn" type="submit"><span lang="es">Entrar</span><span lang="it">Entra</span></button>
+  </form>
+</div>
 
 <div class="sheet">
 
@@ -448,6 +501,40 @@
   }
   btn.addEventListener('click', function(){ setLang(lang()==='it' ? 'es' : 'it'); });
   if(lang()==='it') setLang('it');
+
+  // ---------- password gate ----------
+  // Only the SHA-256 of the password lives in the page, not the password itself.
+  var KEY='27b8f3b92618603d8041a0dc00dfd3a25cedc5cfa777be2b5d28c7a02d475f76';
+  var gate=document.getElementById('gate'), gateForm=document.getElementById('gateForm'),
+      gateInput=document.getElementById('gateInput'), gateError=document.getElementById('gateError');
+  function sha256(s){
+    return crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)).then(function(buf){
+      return Array.prototype.map.call(new Uint8Array(buf), function(b){ return ('0'+b.toString(16)).slice(-2); }).join('');
+    });
+  }
+  function tryUnlock(){
+    sha256(gateInput.value.trim()).then(function(h){
+      if(h===KEY){
+        try{ localStorage.setItem('unlocked','1'); }catch(e){}
+        gate.classList.add('leaving');
+        root.classList.add('unlocked');
+        gateInput.blur();
+        setTimeout(function(){ gate.remove(); }, 650);
+      } else {
+        gateError.hidden=false; gateInput.value='';
+        gateInput.classList.remove('shake'); void gateInput.offsetWidth; gateInput.classList.add('shake');
+        gateInput.focus();
+      }
+    });
+  }
+  if(root.classList.contains('unlocked')){ gate.remove(); }
+  else {
+    gateForm.addEventListener('submit', function(e){ e.preventDefault(); tryUnlock(); });
+    gateInput.addEventListener('input', function(){
+      gateError.hidden=true;
+      if(gateInput.value.length===4) tryUnlock();
+    });
+  }
 })();
 </script>
 </body>
